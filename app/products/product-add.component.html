@@ -1,0 +1,74 @@
+<div class="row">
+  <label class="col-md-offset-2">
+    <h2>{{pageTitle}}</h2>
+  </label>
+  
+</div>
+<br>
+<form novalidate (ngSubmit)="onSubmit(product)" [formGroup]="product">
+  <div class="form-horizontal">
+  <div formGroupName="productInfo">
+   <div class="form-group">
+        <label class="col-sm-2 control-label required">Product Id:</label>
+      <div class="col-lg-2">
+        <input type="text" class="form-control"  placeholder="Enter product id" formControlName="productId"/>
+     </div>
+     <span class="alert alert-danger" role="alert" *ngIf="product.get('productInfo').get('productId').hasError('required') && product.get('productInfo').get('productId').touched">Product Id is required</span>
+     <span class="alert alert-danger" role="alert" *ngIf="product.get('productInfo').get('productId').hasError('minlength') && product.get('productInfo').get('productId').touched">Product Id should not be less than 3 characters</span>
+   </div>
+   
+   <div class="form-group">
+        <label class="col-sm-2 control-label required">Product Name:</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control"  placeholder="Enter product name" formControlName="productName" />
+     </div>
+     <span class="alert alert-danger" role="alert" *ngIf="product.get('productInfo').get('productName').hasError('required') && product.get('productInfo').get('productName').touched">Product name is required</span>
+   </div>
+   <div class="form-group">
+        <label class="col-sm-2 control-label required">Product code:</label>
+      <div class="col-lg-2">
+        <input type="text" class="form-control"  placeholder="Enter product code" formControlName="productCode"/>
+     </div>
+     <span class="alert alert-danger" role="alert" *ngIf="product.get('productInfo').get('productCode').hasError('required') && product.get('productInfo').get('productCode').touched">Product code is required</span>
+   </div>
+  </div>
+<div formGroupName="releaseInfo">
+   <div class="form-group">
+        <label class="col-sm-2 control-label required">Release Date</label>
+      <div class="col-lg-2">
+        <input type="text" class="form-control"  placeholder="Select release date" formControlName="releaseDate"/>
+     </div>
+     <span class="alert alert-danger" role="alert" *ngIf="product.get('releaseInfo').get('releaseDate').hasError('required') && product.get('releaseInfo').get('releaseDate').touched">Release Date is required</span>
+   </div>
+   <div class="form-group">
+        <label class="col-sm-2 control-label required">Description</label>
+      <div class="col-lg-5">
+        <input type="text" class="form-control"  placeholder="Enter Description" formControlName="description" />
+     </div>
+     <span class="alert alert-danger" role="alert" *ngIf="product.get('releaseInfo').get('description').hasError('required') && product.get('releaseInfo').get('description').touched">Description is required</span>
+   </div>
+   <div class="form-group">
+        <label class="col-sm-2 control-label required">Price</label>
+      <div class="col-lg-2">
+        <input type="text" class="form-control"  placeholder="Enter price" formControlName="price"/>
+     </div>
+     <span class="alert alert-danger" role="alert" *ngIf="product.get('releaseInfo').get('price').hasError('required') && product.get('releaseInfo').get('price').touched">Price is required</span>
+   </div>
+   <div class="form-group">
+        <label class="col-sm-2 control-label required">Rating</label>
+      <div class="col-lg-2">
+        <input type="text" class="form-control"  placeholder="Enter rating" formControlName="starRating"/>
+     </div>
+     <span class="alert alert-danger" role="alert" *ngIf="product.get('releaseInfo').get('starRating').hasError('required') && product.get('releaseInfo').get('starRating').touched">Please provide a rating</span>
+   </div>
+</div>
+  <br>
+  <div class="form-group">
+     <div class="col-md-offset-1 col-md-10">
+        <button type="submit" class="btn btn-submit" [disabled]="product.invalid">Add Product</button>
+        <button type="button" class="btn btn-default">Reset</button>
+     </div>
+  </div>
+
+</div>
+</form>
